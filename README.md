@@ -118,3 +118,17 @@ Points abordés:
 Points abordés:
 
 * pattern matching avec option
+
+
+### Either
+* Je ne peux sommer deux montants de devise différentes
+* Je veux savoir quelles étaients les deux montants de la somme s'il y a une erreur pendant l'opération
+* Une somme de montant de devise différente produit un montant Echec
+* Un montant Echec n'est pas la même chose qu'un montant Aucun
+
+Either permet de modéliser un type de retour de méthode avec deux états différents. Le côté Left du Either est considéré comme celui portant l'erreur, le côté Right la valeur du cas nominal
+
+
+Points abordés:
+
+* Either, Left, Right

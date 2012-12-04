@@ -6,13 +6,10 @@ case class Portefeuille(nom: String, dettes: List[Dette]) {
     this.copy(dettes = nouvelleDette :: dettes)
   }
 
-  def notionnelTotal(): Option[Montant] = {
+  def notionnelTotal(): Option[Either[String, Montant]] = {
     dettes
       .map(x => x.notionnel)
-      .foldLeft(None: Option[Montant])((resultatTemp, montant) => Some(resultatTemp match {
-        case None => montant
-        case Some(autre) => Montant(autre.montant + montant.montant, montant.devise)
-      }))
+      .foldLeft(None: Option[Either[String, Montant]])((resultatTemp, montant) => montant.ajoute(resultatTemp))
   }
 
   override def toString(): String = nom + "\n" + dettes.mkString("\n") + "\nnotionnel: " + notionnelTotal().map(_.toString)
