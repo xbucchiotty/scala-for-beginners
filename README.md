@@ -148,3 +148,39 @@ Points abordés:
 * Pattern matching sur case class
 * Trait
 * Héritage
+
+### Approche récursive
+* Une dette une stratégie d'amortissement (infine ou linéaire)
+* Un amortissement *infine* rembourse l'intégralité du notionnel lors de la dernière échéance
+* Un amortissement *progressif* rembourse toujours la même part de capital sur toutes les échéances de la période
+* Une dette possède un **échéancier d'amortissement** qui donne la liste des échéances d'amortissement selon la stratégie choisie
+* Une **échéance d'amortissement** est composée d'une date d'échéance et d'un montant
+* Sur une dette, je peux faire un println de chaque échéance
+
+Pour cela, il faudra enrichir le trait Montant avec
+
+	  def divisePar(coef: Double): Montant
+	
+	  def soustrait(autre: Montant): Montant
+	  
+Sans vouloir importer JodaTime, pour reculer une date d'un mois, il vous faudra:
+
+	import java.util.Calendar.MONTH
+	import java.util.Date
+	import java.util.GregorianCalendar
+	
+	case class DateEcheance(date: Date) {
+
+  		def ajoute1Mois(): DateEcheance = {
+    		var cal = new GregorianCalendar()
+			cal.setTime(date);
+    		cal.add(MONTH, 1)
+    		DateEcheance(cal.getTime())
+		}
+	}
+
+
+Points abordés:
+
+* Récursivité
+* Inner-function
