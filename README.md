@@ -184,3 +184,25 @@ Points abordés:
 
 * Récursivité
 * Inner-function
+
+### Evaluation tardive et Stream
+* Ajouter un thread.sleep(250) dans les fonctions récursives de calcul des échéances d'amortissement
+* Il ne faut calculer l'échéancier qu'une seule fois
+* Les échéances doivent s'afficher au fur et à mesure du calcul dans le worksheet
+
+Le Stream est un type de collection dans Scala. Il contient une référence vers un élément (head), puis une expression évaluée tardivement pour la suite. Rien n'est jamais fait si on accède pas explicitement à la suite.
+Pour ce faire, on peut utiliser
+
+* toList
+* flatten ou flatMap
+* take
+
+L'opérateur de construction de Stream est:
+
+	head #:: tail
+
+Points abordés:
+
+* lazy val
+* Stream
+

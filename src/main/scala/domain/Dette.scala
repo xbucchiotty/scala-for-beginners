@@ -8,6 +8,8 @@ case class Dette(
   dureeMois: Int,
   amortissement: StrategieAmortissement) {
 
-  def afficherEcheancierAmortissement() = amortissement.echeancier(notionnel, dateDebut, dureeMois) map println
+  lazy val echeancier = amortissement.echeancier(notionnel, dateDebut, dureeMois)
+  
+  def afficherEcheancierAmortissement() = echeancier.print("\n")
 
 }
