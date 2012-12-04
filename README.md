@@ -110,3 +110,11 @@ Points abordés:
 
 * Option, None, Some
 
+### Pattern matching
+* Refactoring des derniers if avec map et pattern matching
+* Je peux voir None plutôt que "-" quand pas de montant
+
+
+Points abordés:
+
+* pattern matching avec option

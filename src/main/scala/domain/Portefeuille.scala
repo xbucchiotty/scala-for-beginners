@@ -9,14 +9,13 @@ case class Portefeuille(nom: String, dettes: List[Dette]) {
   def notionnelTotal(): Option[Montant] = {
     dettes
       .map(x => x.notionnel)
-      .foldLeft(None: Option[Montant])((resultatTemp, montant) => {
-        Some(
-          if (!resultatTemp.isDefined) montant
-          else Montant(resultatTemp.get.montant + montant.montant, montant.devise))
-      })
+      .foldLeft(None: Option[Montant])((resultatTemp, montant) => Some(resultatTemp match {
+        case None => montant
+        case Some(autre) => Montant(autre.montant + montant.montant, montant.devise)
+      }))
   }
 
-  override def toString(): String = nom + "\n" + dettes.mkString("\n") + "\nnotionnel: " + (if (this.notionnelTotal().isDefined) this.notionnelTotal().toString() else "-")
+  override def toString(): String = nom + "\n" + dettes.mkString("\n") + "\nnotionnel: " + notionnelTotal().map(_.toString)
 }
 
 object Portefeuille {
