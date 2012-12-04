@@ -41,4 +41,13 @@ Points abordés:
 * objet companion
 * constructeur
 
+### Création d'une méthode
+* Un **portefeuille** est identifié par un *nom* et possède une liste de *dettes
+* Je peux créer un portefeuille sans dette
+* Je peux ajouter de la dette à un portefeuille
+
+Points abordés:
+* List, Nil et ::
+* def, fonction et méthode
+* func.apply(x) == func x
 
