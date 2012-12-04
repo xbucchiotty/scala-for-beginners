@@ -99,3 +99,14 @@ Points abordés:
 * map
 * fold
 * currying
+
+### Option
+* On ajoute le notionnelTotal dans le toString du portefeuille. Je veux voir "-" dans le cas d'un montant "aucun".
+* On peut ajouter à un montant un autre montant.
+
+ Montant.aucun n'était de toute façon pas conceptuellement satisfaisant.
+ 
+Points abordés:
+
+* Option, None, Some
+

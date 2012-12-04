@@ -6,13 +6,17 @@ case class Portefeuille(nom: String, dettes: List[Dette]) {
     this.copy(dettes = nouvelleDette :: dettes)
   }
 
-  def notionnelTotal(): Montant = {
+  def notionnelTotal(): Option[Montant] = {
     dettes
       .map(x => x.notionnel)
-      .foldLeft(Montant.aucun)((a, b) => Montant(a.montant + b.montant, b.devise))
+      .foldLeft(None: Option[Montant])((resultatTemp, montant) => {
+        Some(
+          if (!resultatTemp.isDefined) montant
+          else Montant(resultatTemp.get.montant + montant.montant, montant.devise))
+      })
   }
 
-  override def toString(): String = nom + "\n" + dettes.mkString("\n")
+  override def toString(): String = nom + "\n" + dettes.mkString("\n") + "\nnotionnel: " + (if (this.notionnelTotal().isDefined) this.notionnelTotal().toString() else "-")
 }
 
 object Portefeuille {
