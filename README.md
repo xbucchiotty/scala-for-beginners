@@ -24,6 +24,7 @@ Ouvrez ensuite un *Scala Worksheet* puis créer un une dette.
 
 
 Points abordés:
+
 * créer une classe
 * ajouter des attributs
 * utiliser une classe Java en Scala
@@ -37,6 +38,7 @@ Points abordés:
 On peut alors supprimer les val et les new dans le worksheet.
 
 Points abordés:
+
 * case class
 * objet companion
 * constructeur
@@ -47,7 +49,16 @@ Points abordés:
 * Je peux ajouter de la dette à un portefeuille
 
 Points abordés:
+
 * List, Nil et ::
 * def, fonction et méthode
 * func.apply(x) == func x
 
+### Manipulation d'une liste
+* Surcharger la méthode toString du portefeuille pour afficher les dettes par ligne
+
+Points abordés:
+
+* override
+* map 
+* mkString
