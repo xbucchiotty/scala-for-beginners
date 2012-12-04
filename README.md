@@ -132,3 +132,19 @@ Either permet de modéliser un type de retour de méthode avec deux états diff�
 Points abordés:
 
 * Either, Left, Right
+
+### Polymorphisme
+* Remplacer le type Either lourd à gérer dans notre case un héritage
+
+Le trait Montant devrait avoir la signature suivante : 
+
+	trait Montant {
+  		def ajoute(autre: Option[Montant]): Montant
+	}
+
+
+Points abordés:
+
+* Pattern matching sur case class
+* Trait
+* Héritage

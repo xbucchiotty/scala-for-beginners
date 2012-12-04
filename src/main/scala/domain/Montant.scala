@@ -1,17 +1,29 @@
 package domain
 
-case class Montant(montant: Double, devise: Devise) {
+trait Montant {
 
-  def ajoute(autre: Option[Either[String, Montant]]): Option[Either[String, Montant]] = {
-    autre match {
-      case Some(Right(autreMontant)) if (autreMontant.devise == devise) => Some(Right(Montant(autreMontant.montant + montant, devise)))
-      case Some(Right(autreMontant)) if (autreMontant.devise != devise) => Some(Left("Impossible de sommer des montants de devises diffŽrentes (" + this + " et " + autreMontant + ")"))
-      case Some(Left(_)) => autre
-      case None => Some(Right(this))
-    }
+  def ajoute(autre: Option[Montant]): Montant
+}
+
+case class MontantEchec(val m1: Montant, val m2: Montant) extends Montant {
+
+  override def ajoute(autre: Option[Montant]): Montant = this
+
+  override def toString(): String = "Impossible de sommer des montantes de devises diffŽrentes (" + m1 + ", " + m2 + ")"
+}
+
+case class MontantValide(montant: Double, devise: Devise) extends Montant {
+
+  override def ajoute(autre: Option[Montant]): Montant = autre match {
+    case Some(MontantValide(m, d)) if (d == this.devise) => MontantValide(m + this.montant, d)
+    case Some(MontantValide(m, d)) if (d != this.devise) => MontantEchec(this, autre.get)
+    case Some(autreMontant) => autreMontant
+    case None => this
   }
 }
 
 object Montant {
-  def apply(montant: Double, devise: String): Montant = Montant(montant, Devise(devise))
+  def apply(montant: Double, devise: String): Montant = MontantValide(montant, Devise(devise))
+
+  val aucun: Option[Montant] = None
 }
