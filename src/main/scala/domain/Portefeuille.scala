@@ -6,6 +6,12 @@ case class Portefeuille(nom: String, dettes: List[Dette]) {
     this.copy(dettes = nouvelleDette :: dettes)
   }
 
+  def notionnelTotal(): Montant = {
+    dettes
+      .map(x => x.notionnel)
+      .foldLeft(Montant.aucun)((a, b) => Montant(a.montant + b.montant, b.devise))
+  }
+
   override def toString(): String = nom + "\n" + dettes.mkString("\n")
 }
 
