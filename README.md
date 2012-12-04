@@ -13,7 +13,7 @@ Les contraintes fonctionnelles sont amenées petit à petit pour apporter de nou
 * Un IDE avec un plugin Scala (pour la complétion, ca va être utile !) et Scala Worksheet
 * Un compilateur Scala 2.9.X
 
-## Règle fonctionnelle
+## Kata
 ### Créer une classe
 On placera les classes métiers dans un package *domain* par convention
 
@@ -29,7 +29,16 @@ Points abordés:
 * utiliser une classe Java en Scala
 * Utiliser une Scala Worsheet
 
+### Case class et factory method
+* Transformer les classes en case class.
+* Créer une factory method sur Montant pour saisir une devise directement avec une string
 
 
+On peut alors supprimer les val et les new dans le worksheet.
+
+Points abordés:
+* case class
+* objet companion
+* constructeur
 
 

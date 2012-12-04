@@ -1,3 +1,3 @@
 package domain
 
-class Devise(val code:String)
+case class Devise(code:String)

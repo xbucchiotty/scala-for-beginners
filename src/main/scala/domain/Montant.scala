@@ -1,3 +1,9 @@
 package domain
 
-class Montant(val montant: Double, val devise: Devise)
+case class Montant(montant: Double, devise: Devise) {
+
+}
+
+object Montant {
+  def apply(montant: Double, devise: String): Montant = Montant(montant, Devise(devise))
+}
