@@ -1,6 +1,11 @@
 .cache
+*.iml
+out/
+.idea/
 .classpath
 .project
 .settings/
 .worksheet/
 bin/
+target/
+project/
