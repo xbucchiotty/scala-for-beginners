@@ -8,4 +8,4 @@ out/
 .worksheet/
 bin/
 target/
-project/
+project/boot/
